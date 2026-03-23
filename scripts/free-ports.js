@@ -2,45 +2,32 @@ const { execSync } = require('child_process');
 
 const PORTS = [9030, 5173];
 
-function freePortWindows(port) {
+function freePort(port) {
   try {
-    const output = execSync(`netstat -ano | findstr :${port}`, { encoding: 'utf8' });
-    const pids = new Set();
+    if (process.platform === 'win32') {
+      const result = execSync(`netstat -ano | findstr :${port}`, {
+        encoding: 'utf8',
+      });
 
-    for (const line of output.split('\n')) {
-      if (!line.includes('LISTENING')) continue;
-      const parts = line.trim().split(/\s+/);
-      const pid = parts[parts.length - 1];
-      if (pid && pid !== '0') pids.add(pid);
-    }
+      const pid = result.trim().split(/\s+/).pop();
 
-    for (const pid of pids) {
-      try {
-        execSync(`taskkill /PID ${pid} /F`, { stdio: 'ignore' });
-        console.log(`Freed port ${port} (PID ${pid})`);
-      } catch {
-        // process may have already exited
+      if (pid) {
+        execSync(`taskkill /PID ${pid} /F`);
+        console.log(`Freed port ${port}`);
+      }
+    } else {
+      const pid = execSync(`lsof -ti:${port}`, {
+        encoding: 'utf8',
+      }).trim();
+
+      if (pid) {
+        execSync(`kill -9 ${pid}`);
+        console.log(`Freed port ${port}`);
       }
     }
   } catch {
-    // no process on this port
+    console.log(`Port ${port} is already free`);
   }
 }
 
-function freePortUnix(port) {
-  try {
-    const pid = execSync(`lsof -ti :${port}`, { encoding: 'utf8' }).trim();
-    if (pid) {
-      execSync(`kill -9 ${pid}`, { stdio: 'ignore' });
-      console.log(`Freed port ${port} (PID ${pid})`);
-    }
-  } catch {
-    // no process on this port
-  }
-}
-
-const freePort = process.platform === 'win32' ? freePortWindows : freePortUnix;
-
-for (const port of PORTS) {
-  freePort(port);
-}
+PORTS.forEach(freePort);
