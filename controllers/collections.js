@@ -1,8 +1,23 @@
 const { validationResult } = require('express-validator');
+
 const mockDataStore = require('../utils/mockData');
-const { asyncHandler, NotFoundError, ConflictError } = require('../utils/errors');
-const { sendValidationError } = require('../utils/response');
-const { HTTP_STATUS, ERROR_MESSAGES } = require('../utils/constants');
+
+const {
+  asyncHandler,
+  NotFoundError,
+  ConflictError
+} = require('../utils/errors');
+
+const {
+  sendValidationError
+} = require('../utils/response');
+
+const {
+  HTTP_STATUS,
+  ERROR_MESSAGES
+} = require('../utils/constants');
+
+
 
 /**
  * @route   GET api/collections
@@ -10,9 +25,20 @@ const { HTTP_STATUS, ERROR_MESSAGES } = require('../utils/constants');
  * @access  Public
  */
 exports.getCollections = asyncHandler(async (req, res) => {
-  const collections = mockDataStore.collections.findAll();
-  return res.status(HTTP_STATUS.OK).json({ collections });
+
+  const collections =
+    mockDataStore.collections.findAll();
+
+
+  return res
+    .status(HTTP_STATUS.OK)
+    .json({
+      collections
+    });
+
 });
+
+
 
 /**
  * @route   GET api/collections/:id
@@ -20,12 +46,36 @@ exports.getCollections = asyncHandler(async (req, res) => {
  * @access  Public
  */
 exports.getCollectionById = asyncHandler(async (req, res) => {
-  const collection = mockDataStore.collections.findById(req.params.id);
+
+  const {
+    id
+  } = req.params;
+
+
+  const collection =
+    mockDataStore.collections.findById(id);
+
+
+
   if (!collection) {
-    throw new NotFoundError(ERROR_MESSAGES.COLLECTION_NOT_FOUND);
+
+    throw new NotFoundError(
+      ERROR_MESSAGES.COLLECTION_NOT_FOUND
+    );
+
   }
-  return res.status(HTTP_STATUS.OK).json({ collection });
+
+
+
+  return res
+    .status(HTTP_STATUS.OK)
+    .json({
+      collection
+    });
+
 });
+
+
 
 /**
  * @route   POST api/collections
@@ -33,24 +83,91 @@ exports.getCollectionById = asyncHandler(async (req, res) => {
  * @access  Public
  */
 exports.createCollection = asyncHandler(async (req, res) => {
-  const errors = validationResult(req);
+
+
+  // Validate request
+
+  const errors =
+    validationResult(req);
+
+
+
   if (!errors.isEmpty()) {
-    return sendValidationError(res, errors.array());
+
+    return sendValidationError(
+      res,
+      errors.array()
+    );
+
   }
 
-  const { collectionName, description, ownerId, imageUrl } = req.body;
 
-  const existingCollection = mockDataStore.collections.findOne({ collectionName });
+
+  const {
+    collectionName,
+    description,
+    ownerId,
+    imageUrl
+  } = req.body;
+
+
+
+  const normalizedName =
+    collectionName.trim();
+
+
+
+  // Check duplicate collection
+
+  const existingCollection =
+    mockDataStore.collections.findOne({
+      collectionName: normalizedName
+    });
+
+
+
   if (existingCollection) {
-    throw new ConflictError(ERROR_MESSAGES.COLLECTION_ALREADY_EXISTS);
+
+    throw new ConflictError(
+      ERROR_MESSAGES.COLLECTION_ALREADY_EXISTS
+    );
+
   }
 
-  const newCollection = mockDataStore.collections.create({
-    collectionName: collectionName.trim(),
-    description: description ? description.trim() : '',
-    ownerId: ownerId ? String(ownerId) : null,
-    imageUrl: imageUrl || '',
-  });
 
-  return res.status(HTTP_STATUS.CREATED).json({ collection: newCollection });
+
+  // Create collection
+
+  const newCollection =
+    mockDataStore.collections.create({
+
+      collectionName:
+        normalizedName,
+
+
+      description:
+        description
+          ? description.trim()
+          : '',
+
+
+      ownerId:
+        ownerId
+          ? String(ownerId)
+          : null,
+
+
+      imageUrl:
+        imageUrl || ''
+
+    });
+
+
+
+  return res
+    .status(HTTP_STATUS.CREATED)
+    .json({
+      collection: newCollection
+    });
+
 });
