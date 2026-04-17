@@ -212,6 +212,13 @@
   font-family: Rubik-B;
 }
 
+#roulette .balanceDisplay {
+  color: var(--lemon);
+  font-family: SpaceMono-R;
+  font-size: 0.72rem;
+  text-align: right;
+}
+
 #roulette .betSection {
   margin-bottom: 0.95rem;
 }
@@ -312,6 +319,22 @@
 #roulette .spinBtn:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+}
+
+#roulette .rouletteMessage {
+  color: var(--dark-white);
+  font-family: WorkSans-S;
+  font-size: 0.78rem;
+  margin: 0.65rem 0 0;
+  min-height: 1.2rem;
+  text-align: center;
+}
+
+#roulette .pickGrid button:disabled,
+#roulette .coinBtn:disabled,
+#roulette .stakeInput:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
 }
 
 @media (max-width: 575px) {

@@ -1,6 +1,6 @@
 import "./Roulette.css";
 import { Helmet } from "react-helmet-async";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { FaBitcoin, FaEthereum } from "react-icons/fa";
 import { TbCurrencySolana } from "react-icons/tb";
 import { PiCurrencyCircleDollarLight } from "react-icons/pi";
@@ -38,6 +38,10 @@ const Roulette = () => {
   const [spinning, setSpinning] = useState(false);
   const [rotation, setRotation] = useState(0);
   const [result, setResult] = useState({ number: 0, color: "green" });
+  const [roundPick, setRoundPick] = useState("red");
+  const [balance, setBalance] = useState(1000);
+  const [message, setMessage] = useState("Choose a pick and place your demo bet.");
+  const timerRef = useRef(null);
 
   const selectedPick = useMemo(
     () => picks.find((p) => p.key === activePick) || picks[0],
@@ -62,9 +66,27 @@ const Roulette = () => {
     return false;
   };
 
+  useEffect(() => () => clearTimeout(timerRef.current), []);
+
   const spinWheel = () => {
     if (spinning) return;
+
+    const stakeAmount = Number(stake);
+    if (!Number.isFinite(stakeAmount) || stakeAmount <= 0) {
+      setMessage("Enter a stake greater than 0.");
+      return;
+    }
+    if (stakeAmount > balance) {
+      setMessage("Your demo balance is too low for this bet.");
+      return;
+    }
+
+    const pickForRound = activePick;
+    const selectedPickForRound = picks.find((pick) => pick.key === pickForRound) || picks[0];
     setSpinning(true);
+    setRoundPick(pickForRound);
+    setBalance((currentBalance) => currentBalance - stakeAmount);
+    setMessage(`Bet placed: ${stakeAmount.toFixed(2)} ${activeCoin}. Good luck!`);
 
     const randomIndex = Math.floor(Math.random() * wheelNumbers.length);
     const number = wheelNumbers[randomIndex];
@@ -75,13 +97,21 @@ const Roulette = () => {
 
     setRotation(nextRotation);
 
-    setTimeout(() => {
+    timerRef.current = setTimeout(() => {
       setResult({ number, color: getColor(number) });
+      const wonRound = isWin(number, pickForRound);
+      if (wonRound) {
+        const payout = stakeAmount * selectedPickForRound.multi;
+        setBalance((currentBalance) => currentBalance + payout);
+        setMessage(`You won ${payout.toFixed(2)} ${activeCoin}!`);
+      } else {
+        setMessage(`The ball landed on ${number}. Better luck next time.`);
+      }
       setSpinning(false);
     }, 4200);
   };
 
-  const won = isWin(result.number, activePick);
+  const won = isWin(result.number, roundPick);
 
   return (
     <>
@@ -140,7 +170,7 @@ const Roulette = () => {
                   <span className="resultLabel">Last Result</span>
                   <span className={`resultBadge ${result.color}`}>{result.number}</span>
                   <span className={`resultStatus ${won ? "win" : "lose"}`}>
-                    {won ? "Winning pick" : "Try again"}
+                    {spinning ? "Wheel spinning" : won ? "Winning pick" : "Try again"}
                   </span>
                 </div>
               </div>
@@ -148,7 +178,10 @@ const Roulette = () => {
 
             <div className="col-12 col-lg-5">
               <div className="rouletteCard p-3 p-md-4">
-                <h5 className="m-0 mb-3 tableTitle">Place Bet</h5>
+                <div className="d-flex justify-content-between align-items-center mb-3">
+                  <h5 className="m-0 tableTitle">Place Bet</h5>
+                  <span className="balanceDisplay">Demo balance: {balance.toFixed(2)}</span>
+                </div>
 
                 <div className="betSection">
                   <span className="betLabel">Pick</span>
@@ -158,6 +191,7 @@ const Roulette = () => {
                         key={pick.key}
                         className={activePick === pick.key ? "active" : ""}
                         onClick={() => setActivePick(pick.key)}
+                          disabled={spinning}
                       >
                         {pick.label}
                       </button>
@@ -175,6 +209,7 @@ const Roulette = () => {
                           key={coin}
                           className={`coinBtn ${activeCoin === coin ? "active" : ""}`}
                           onClick={() => setActiveCoin(coin)}
+                          disabled={spinning}
                         >
                           <CoinIcon style={{ color: coinMeta[coin].color }} />
                           <span>{coin}</span>
@@ -192,6 +227,7 @@ const Roulette = () => {
                     min="1"
                     value={stake}
                     onChange={(e) => setStake(e.target.value)}
+                    disabled={spinning}
                   />
                 </div>
 
@@ -209,6 +245,7 @@ const Roulette = () => {
                 <button className="spinBtn mt-3" onClick={spinWheel} disabled={spinning}>
                   {spinning ? "Spinning..." : "Spin Roulette"}
                 </button>
+                <p className="rouletteMessage" aria-live="polite">{message}</p>
               </div>
             </div>
           </div>

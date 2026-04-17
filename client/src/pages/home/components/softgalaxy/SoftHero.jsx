@@ -61,7 +61,7 @@ const SoftHero = ({ data }) => {
               </Link>
               {innerOrbitLinks.map(({ title, icon: Icon, to, className }) => (
                 <Link key={title} to={to} className={`sg-hero-node ${className}`} title={title} aria-label={title}>
-                  <Icon color="#ffd95a" />
+                  <Icon className="sg-hero-icon" color="#ffd95a" />
                 </Link>
               ))}
             </div>
