@@ -33,8 +33,8 @@ const NFTLab = ({ Data }) => {
   return (
     <>
       <Helmet>
-        <title>SoftGalaxy | Share your nft</title>
-        <meta name="description" content="SoftGalaxy | Share your nft" />
+        <title>Kongregate | Share your nft</title>
+        <meta name="description" content="Kongregate | Share your nft" />
       </Helmet>
       <section id="AddNFT">
         <div className="container mt-4 mb-5 mt-md-5 pt-lg-3">

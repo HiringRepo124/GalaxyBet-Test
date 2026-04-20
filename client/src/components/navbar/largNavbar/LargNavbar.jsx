@@ -93,9 +93,9 @@ const LargNavbar = ({ rowData, setData }) => {
           className="nav-prand d-flex justify-content-center align-items-center gap-2 text-decoration-none"
           to="/home"
         >
-          <img src={Data.navIcon} alt="SoftGalaxy icon" width="25px" />
+          <img src={Data.navIcon} alt="Kongregate logo" width="25px" />
           <span className="F1">
-            <span className="lemon">SOFT</span>GALAXY
+            KONGREGATE
           </span>
         </Link>
 

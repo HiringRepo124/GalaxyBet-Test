@@ -247,8 +247,8 @@ const Product = ({ Data, productName }) => {
   return (
     <>
       <Helmet>
-        <title>SoftGalaxy Product | {productName} Account</title>
-        <meta name="description" content="SoftGalaxy | Account" />
+        <title>Kongregate Product | {productName} Account</title>
+        <meta name="description" content="Kongregate | Account" />
       </Helmet>
 
       <section id="product">
@@ -492,12 +492,12 @@ const Product = ({ Data, productName }) => {
             />
           </div>
           <div className="walletSubTitle mb-4">
-            SoftGalaxy News: launch updates, trending drops, and collector highlights.
+            Kongregate News: launch updates, trending drops, and collector highlights.
           </div>
           <div className="newsModalCard mb-4 p-3 rounded bg-secondary bg-opacity-10">
             <h5>Enjoy the latest news</h5>
             <p>
-              SoftGalaxy is live with new curated drops, special creator stories, and premium collector insights.
+              Kongregate is live with new curated drops, special creator stories, and premium collector insights.
             </p>
             <ul className="mb-0 ps-3">
               <li>New limited-edition drop arriving today.</li>

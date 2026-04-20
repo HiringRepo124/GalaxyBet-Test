@@ -23,7 +23,7 @@ const SoftHero = ({ data }) => {
               {hero.badge || "Next-gen crypto gaming platform"}
             </div>
             <h1 className="sg-hero-title">
-              Welcome to <span>SoftGalaxy</span>
+              Welcome to <span>Kongregate</span>
             </h1>
             <p className="sg-hero-desc">
               {hero.description ||
@@ -57,7 +57,7 @@ const SoftHero = ({ data }) => {
               <div className="sg-hero-ring" />
               <div className="sg-hero-ring sg-hero-ring-2" />
               <Link to="/home" className="sg-hero-core" aria-label="Home">
-                <img src="/images/softgalaxy.svg" alt="SoftGalaxy" />
+                <img src="/images/softgalaxy.svg" alt="Kongregate" />
               </Link>
               {innerOrbitLinks.map(({ title, icon: Icon, to, className }) => (
                 <Link key={title} to={to} className={`sg-hero-node ${className}`} title={title} aria-label={title}>

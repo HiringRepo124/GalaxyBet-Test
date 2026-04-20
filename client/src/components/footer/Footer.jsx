@@ -14,9 +14,9 @@ const Footer = () => {
               className="nav-prand d-flex justify-content-center align-items-center gap-2 text-decoration-none"
               to="/home"
             >
-              <img src="/images/softgalaxy.svg" alt="SoftGalaxy icon" width="25px" />
+              <img src="/images/softgalaxy.svg" alt="Kongregate logo" width="25px" />
               <span className="F1">
-                <span className="lemon">SOFT</span>GALAXY
+                KONGREGATE
               </span>
             </Link>
           </div>
@@ -60,7 +60,7 @@ const Footer = () => {
         <hr />
         <div className="d-flex justify-content-center copyriter py-4">
           <p className="F3">
-            Â© 2024 SoftGalaxy. All Right Reserved by
+            Â© 2024 Kongregate. All Right Reserved by
             <a href="https://ahmedabdalalim.pages.dev/" target="_blank">
               <img
                 src="https://raw.githubusercontent.com/ahmed-abd-alalim/ahmed-abd-alalim/main/assets/3A.png"

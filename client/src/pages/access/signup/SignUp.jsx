@@ -147,8 +147,8 @@ const SignUp = ({ setData }) => {
   return (
     <>
       <Helmet>
-        <title>SoftGalaxy | SignUp</title>
-        <meta name="description" content="SoftGalaxy | SignUp" />
+        <title>Kongregate | SignUp</title>
+        <meta name="description" content="Kongregate | SignUp" />
       </Helmet>
       <section id="SignUp" className="pt-0 pt-lg-1 pb-4">
         <div className="container">

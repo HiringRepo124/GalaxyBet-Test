@@ -116,10 +116,10 @@ const Roulette = () => {
   return (
     <>
       <Helmet>
-        <title>SoftGalaxy | Roulette</title>
+        <title>Kongregate | Roulette</title>
         <meta
           name="description"
-          content="Play crypto roulette on SoftGalaxy with BTC, ETH, SOL and USDT"
+          content="Play crypto roulette on Kongregate with BTC, ETH, SOL and USDT"
         />
       </Helmet>
 

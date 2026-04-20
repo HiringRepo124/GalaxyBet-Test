@@ -22,8 +22,8 @@ const Member = ({ Data, userName }) => {
   return (
     <>
       <Helmet>
-        <title>SoftGalaxy | {userName} Account</title>
-        <meta name="description" content="SoftGalaxy | Account" />
+        <title>Kongregate | {userName} Account</title>
+        <meta name="description" content="Kongregate | Account" />
       </Helmet>
       <UserInfo userInfromation={userInfromation} />
       <UserProducts rowData={Data} userInfromation={userInfromation} />

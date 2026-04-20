@@ -5,8 +5,8 @@ const Slots = () => {
   return (
     <>
       <Helmet>
-        <title>SoftGalaxy | Slots</title>
-        <meta name="description" content="Play slots on SoftGalaxy" />
+        <title>Kongregate | Slots</title>
+        <meta name="description" content="Play slots on Kongregate" />
       </Helmet>
 
       <section id="slotsPage" className="mt-3 mb-5">

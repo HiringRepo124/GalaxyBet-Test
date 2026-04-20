@@ -17,7 +17,7 @@ const Presentation = () => {
       main: (
         <span className="prWords bold">
           Welcome to
-          <span className="lemon d-block">SoftGalaxy</span>
+          <span className="lemon d-block">Kongregate</span>
         </span>
       ),
     },
