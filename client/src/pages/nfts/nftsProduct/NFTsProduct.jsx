@@ -13,6 +13,12 @@ import { MdVerified } from "react-icons/md";
 
 const PAGE_SIZE = 12;
 
+const assetUrl = (path) => {
+  if (!path || /^(https?:|data:|blob:)/i.test(path)) return path;
+  const baseUrl = import.meta.env.BASE_URL || "/";
+  return encodeURI(`${baseUrl.replace(/\/$/, "")}/${path.replace(/^\/+/, "")}`);
+};
+
 const NFTs = ({
   NfsData,
   setNfsData,
@@ -205,7 +211,7 @@ const NFTs = ({
                           >
                             <div className="cardMedia">
                               <img
-                                src={item.postImg}
+                                src={assetUrl(item.postImg)}
                                 className="card-img-top"
                                 alt="post Img"
                               />
@@ -240,7 +246,7 @@ const NFTs = ({
                                 className="d-flex align-items-center gap-2 userinfo"
                               >
                                 <img
-                                  src={item.userInfo.img}
+                                  src={assetUrl(item.userInfo.img)}
                                   alt="user img"
                                   width="32px"
                                 />
@@ -283,7 +289,7 @@ const NFTs = ({
                         <div className="item p-1">
                           <div>
                             <img
-                              src={item.primaryImg}
+                              src={assetUrl(item.primaryImg)}
                               alt="primary Img"
                               width="100%"
                             />
@@ -291,14 +297,14 @@ const NFTs = ({
                           <div className="row mt-1 px-2">
                             <div className="col-4 p-1 p-md-2">
                               <img
-                                src={item.secondaryImg[0]}
+                                src={assetUrl(item.secondaryImg[0])}
                                 alt="secondary Img"
                                 width="100%"
                               />
                             </div>
                             <div className="col-4 p-1 p-md-2">
                               <img
-                                src={item.secondaryImg[1]}
+                                src={assetUrl(item.secondaryImg[1])}
                                 alt="secondary Img"
                                 width="100%"
                               />
@@ -321,7 +327,7 @@ const NFTs = ({
                               className="d-flex align-items-center gap-2 mt-2"
                             >
                               <img
-                                src={item.userInfo.img}
+                                src={assetUrl(item.userInfo.img)}
                                 alt="user img"
                                 width="28px"
                               />

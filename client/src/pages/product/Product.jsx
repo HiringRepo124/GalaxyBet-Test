@@ -5,6 +5,12 @@ import { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { MdVerified } from "react-icons/md";
 
+const assetUrl = (path) => {
+  if (!path || /^(https?:|data:|blob:)/i.test(path)) return path;
+  const baseUrl = import.meta.env.BASE_URL || "/";
+  return encodeURI(`${baseUrl.replace(/\/$/, "")}/${path.replace(/^\/+/, "")}`);
+};
+
 const Product = ({ Data, productName }) => {
   const navigate = useNavigate();
 
@@ -255,11 +261,13 @@ const Product = ({ Data, productName }) => {
         <div className="container mt-4 mb-5 mt-md-5 pt-lg-3">
           <div className="row d-flex align-items-center productData mx-2 py-3 pb-4 pb-md-3 px-md-2">
             <div className="col-12 col-lg-6 productImg">
-              <img
-                src={productInfromation.postImg}
-                alt="product Img"
-                width={"100%"}
-              />
+              {productInfromation.postImg && (
+                <img
+                  src={assetUrl(productInfromation.postImg)}
+                  alt={productInfromation.postTitle || "NFT product"}
+                  width="100%"
+                />
+              )}
 
               <div className="productDetailsBelowImage mt-4">
                 <div className="blockchainDetails mb-4">
