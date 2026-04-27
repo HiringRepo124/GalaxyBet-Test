@@ -7,8 +7,8 @@ const User = ({ Data, setData }) => {
   return (
     <>
       <Helmet>
-        <title>Kongregate | Account</title>
-        <meta name="description" content="Kongregate | Account" />
+        <title>SoftGalaxy | Account</title>
+        <meta name="description" content="SoftGalaxy | Account" />
       </Helmet>
       <UserInfo rowData={Data} serBodyComponant={serBodyComponant} />
       {bodyComponant === 0 ? (

@@ -47,8 +47,8 @@ const Support = () => {
   return (
     <>
       <Helmet>
-        <title>Kongregate | Support</title>
-        <meta name="description" content="Kongregate | Support" />
+        <title>SoftGalaxy | Support</title>
+        <meta name="description" content="SoftGalaxy | Support" />
       </Helmet>
       <section id="Support" className="mt-4 pt-lg-5">
         <div className="container">
@@ -99,7 +99,7 @@ const Support = () => {
             <div className="col-11 col-md-10 col-lg-8 text-center pricingSection">
               <span className="FontOne">Pricing Plans</span>
               <span className="FontTow d-block mt-2 mx-lg-5">
-                Kongregate offers competitive rates and pricing plans to help
+                SoftGalaxy offers competitive rates and pricing plans to help
                 you find a plan that fits the needs and budget of your business.
               </span>
             </div>
@@ -145,7 +145,7 @@ const Support = () => {
             <div className="col-9 col-md-4 mailSection mx-md-3 text-center p-4 mt-3 mt-md-0">
               <CiMail className="helpIcon" />
               <span className="d-block ploedText mt-3">
-                support@kongregate.com
+                support@softgalaxy.com
               </span>
               <span className="d-block sendText mt-2">
                 The best way to get answer faster

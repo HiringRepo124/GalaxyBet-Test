@@ -160,8 +160,8 @@ const Trading = () => {
   return (
     <>
       <Helmet>
-        <title>Kongregate | Trading Volume</title>
-        <meta name="description" content="Kongregate trading volume chart page" />
+        <title>SoftGalaxy | Trading Volume</title>
+        <meta name="description" content="SoftGalaxy trading volume chart page" />
       </Helmet>
       <section id="trading">
         <div className="container mt-4 mb-5 mt-md-5 pt-lg-3">

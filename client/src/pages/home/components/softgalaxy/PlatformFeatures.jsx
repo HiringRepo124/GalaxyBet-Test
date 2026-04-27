@@ -4,7 +4,7 @@ const DEFAULT_FEATURES = [
   {
     step: "01",
     title: "Connect Your Wallet",
-    desc: "Link your wallet to access staking, games, and affiliate rewards across the Kongregate ecosystem.",
+    desc: "Link your wallet to access staking, games, and affiliate rewards across the SoftGalaxy ecosystem.",
     actionLabel: "Connect Now",
     actionLink: "/signup",
   },
@@ -42,7 +42,7 @@ const PlatformFeatures = ({ data }) => {
   return (
     <section className="soft-section">
       <div className="container">
-        <h2 className="soft-section-title">How Kongregate Works</h2>
+        <h2 className="soft-section-title">How SoftGalaxy Works</h2>
         <p className="soft-section-sub mb-4">
           Three simple steps to start earning in the galaxy.
         </p>

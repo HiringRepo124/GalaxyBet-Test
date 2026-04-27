@@ -64,9 +64,9 @@ const SomleNavbar = ({ rowData }) => {
           className="d-flex justify-content-center align-items-center gap-2 text-decoration-none"
           to="/home"
         >
-          <img src={Data.navIcon} alt="Kongregate logo" width="25px" />
+          <img src={Data.navIcon} alt="SoftGalaxy icon" width="25px" />
           <span className="F1">
-            KONGREGATE
+            <span className="lemon">SOFT</span>GALAXY
           </span>
         </Link>
         <HiMenuAlt3 className="IoMenu" onClick={HandelMenu} />
@@ -139,7 +139,7 @@ const SomleNavbar = ({ rowData }) => {
         <hr />
         <div className="d-flex justify-content-center mb-4">
           <p className="F3">
-            © 2024 Kongregate. All Right Reserved by
+            © 2024 SoftGalaxy. All Right Reserved by
             <a href="https://ahmedabdalalim.pages.dev" target="_blank">
               <img
                 src="https://raw.githubusercontent.com/ahmed-abd-alalim/ahmed-abd-alalim/main/assets/3A.png"

@@ -13,10 +13,10 @@ const Home = ({ Data }) => {
   return (
     <div className="soft-home">
       <Helmet>
-        <title>Kongregate | Home</title>
+        <title>SoftGalaxy | Home</title>
         <meta
           name="description"
-          content="Kongregate — stake, play, and grow your crypto gaming network."
+          content="SoftGalaxy — stake, play, and grow your crypto gaming network."
         />
       </Helmet>
       <SoftHero data={homeData} />

@@ -9,7 +9,7 @@ const transactions = [
     date: "2026-06-01",
     type: "Buy",
     item: "Galaxy Ape #244",
-    marketplace: "Kongregate",
+    marketplace: "SoftGalaxy",
     amount: "3.25 ETH",
     fee: "0.06 ETH",
     status: "Completed",
@@ -39,7 +39,7 @@ const transactions = [
     date: "2026-06-04",
     type: "Buy",
     item: "Moon Token",
-    marketplace: "Kongregate",
+    marketplace: "SoftGalaxy",
     amount: "2.40 ETH",
     fee: "0.04 ETH",
     status: "Completed",
@@ -59,7 +59,7 @@ const transactions = [
     date: "2026-06-06",
     type: "Buy",
     item: "Solar Blade #7",
-    marketplace: "Kongregate",
+    marketplace: "SoftGalaxy",
     amount: "5.30 ETH",
     fee: "0.10 ETH",
     status: "Completed",
@@ -89,7 +89,7 @@ const transactions = [
     date: "2026-06-09",
     type: "Sell",
     item: "Galaxy Atlas",
-    marketplace: "Kongregate",
+    marketplace: "SoftGalaxy",
     amount: "4.60 ETH",
     fee: "0.09 ETH",
     status: "Completed",
@@ -109,7 +109,7 @@ const transactions = [
     date: "2026-06-11",
     type: "Sell",
     item: "Aurora Crown",
-    marketplace: "Kongregate",
+    marketplace: "SoftGalaxy",
     amount: "3.80 ETH",
     fee: "0.07 ETH",
     status: "Completed",
@@ -165,7 +165,7 @@ const Transactions = () => {
   return (
     <>
       <Helmet>
-        <title>Kongregate | Transaction History</title>
+        <title>SoftGalaxy | Transaction History</title>
         <meta name="description" content="Track your NFT transaction history" />
       </Helmet>
       <section id="transactions">
@@ -187,7 +187,7 @@ const Transactions = () => {
                 <div>
                   <span className="F2 historyTitle">Latest Activity</span>
                   <p className="F4 historySubtitle mt-2">
-                    Your most recent purchases and sales on the Kongregate marketplace.
+                    Your most recent purchases and sales on the SoftGalaxy marketplace.
                   </p>
                 </div>
                 <div className="historyStats d-flex gap-3">

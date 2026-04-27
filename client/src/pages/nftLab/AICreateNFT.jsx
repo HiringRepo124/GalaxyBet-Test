@@ -53,7 +53,7 @@ const AICreateNFT = ({ Data }) => {
   return (
     <>
       <Helmet>
-        <title>Kongregate | AI Create NFT</title>
+        <title>SoftGalaxy | AI Create NFT</title>
         <meta name="description" content="Create NFT with AI by inputting sentences" />
       </Helmet>
 

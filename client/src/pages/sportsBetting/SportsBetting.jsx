@@ -163,10 +163,10 @@ const SportsBetting = () => {
   return (
     <>
       <Helmet>
-        <title>Kongregate | Sports Betting</title>
+        <title>SoftGalaxy | Sports Betting</title>
         <meta
           name="description"
-          content="Bet on top sports events with BTC, ETH, SOL, and USDT on Kongregate"
+          content="Bet on top sports events with BTC, ETH, SOL, and USDT on SoftGalaxy"
         />
       </Helmet>
 
