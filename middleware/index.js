@@ -41,8 +41,8 @@ const configureMiddleware = (app) => {
 
   // Rate limiting
   const limiter = expressRateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // Limit each IP to 100 requests per windowMs
+    windowMs: 10 * 60 * 1000, // 10 minutes
+    max: 70, // Limit each IP to 70 requests per windowMs
     message: 'Too many requests from this IP, please try again later.',
     standardHeaders: true,
     legacyHeaders: false,
